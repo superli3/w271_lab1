@@ -83,15 +83,39 @@ challenger
 #stargazer(challenger, header= F, title = "Summary Table of Challenger Data", type='latex')
 stargazer(challenger, header= F, title = "Summary Table of Challenger Data", type='text')
 
+
+#fixing challenger O-ring variable, if value is 0 then remain 0, else value is 1
+challenger$O.ring2 <- ifelse(challenger$O.ring == 0, 0, 1)
+
 knitr::kable(
-  challenger[1:6,1:5 ], caption = 'Top 6 Rows of Challenger Dataset')
+  challenger[1:6,1:6 ], caption = 'Top 6 Rows of Challenger Dataset')
 
 
-# Distribution of log(wage)
-ggplot(challenger, aes(x = lwg)) +
-  geom_histogram(aes(y = ..density..), binwidth = 0.2, fill="#0072B2", colour="black") +
-  ggtitle("Log Wages") + 
+# Distribution of Temp
+ggplot(challenger, aes(x = Temp)) +
+  geom_histogram(aes(y = ..density..), binwidth = 5, fill="#0072B2", colour="black") +
+  ggtitle("Distribution of Temprature") + 
   theme(plot.title = element_text(lineheight=1, face="bold"))
+
+# Distribution of Pressure
+ggplot(challenger, aes(x = Pressure)) +
+  geom_histogram(aes(y = ..density..), binwidth = 5, fill="#0072B2", colour="black") +
+  ggtitle("Distribution of Pressure") + 
+  theme(plot.title = element_text(lineheight=1, face="bold"))
+
+# Temp by O.ring failure (binaraized)
+ggplot(challenger, aes(factor(O.ring2), Temp)) +
+  geom_boxplot(aes(fill = factor(O.ring2))) + 
+  geom_jitter() +
+  ggtitle("O.ring failure by Temperature") + 
+  theme(plot.title = element_text(lineheight=1, face="bold")) 
+
+# Pressure by O.ring failure (binaraized)
+ggplot(challenger, aes(factor(O.ring2), Pressure)) +
+  geom_boxplot(aes(fill = factor(O.ring2))) + 
+  geom_jitter() +
+  ggtitle("O.ring failure by Pressure") + 
+  theme(plot.title = element_text(lineheight=1, face="bold")) 
 
 ```
 
