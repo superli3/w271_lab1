@@ -77,9 +77,12 @@ library(mcprofile)
 Conduct a thorough EDA of the data set. This should include both graphical and tabular analysis as taught in this course. Output-dump (that is, graphs and tables that don't come with explanations) will result in a very low, if not zero, score. Since the report has a page-limit, you will have to be selective when choosing visuals to illustrate your key points, associated with a concise explanation of the visuals. This EDA should begin with an inspection of the given dataset; examination of anomalies, missing values, potential of top and/or bottom code etc.   
 
 ```{r Part 1 - EDA, results='asis'}
-challenger<-read.table(file = "/Users/jeff/Documents/MIDS/W271/w271_lab1/challenger.csv", header = TRUE, sep = ",") #Import table
+
+
+path = "/Users/jeff/Documents/MIDS/W271/w271_lab1/challenger.csv"
+challenger<-read.table(file =  path, header = TRUE, sep = ",") #Import table
 summary(challenger)
-challenger
+#challenger
 #stargazer(challenger, header= F, title = "Summary Table of Challenger Data", type='latex')
 stargazer(challenger, header= F, title = "Summary Table of Challenger Data", type='text')
 
@@ -129,15 +132,46 @@ Answer the following from Question 4 of Bilder and Loughin Section 2.4 Exercises
 
 (b) Estimate the logistic regression model using the explanatory variables in a linear form.
 
+```{r Part 2, results='asis'}
+
+mod2.fit<-glm(formula = O.ring2 ~ Pressure + Temp, 
+             family = binomial(link = logit), data = challenger)
+
+mod2.fit
+
+```
+
+
+
 (c) Perform LRTs to judge the importance of the explanatory variables in the model.
 
+```{r Part 2, results='asis'}
+
+Anova(mod=mod2.fit, test = "LR")
+
+```
+
+
 (d) The authors chose to remove Pressure from the model based on the LRTs. Based on your results, discuss why you think this was done. Are there any potential problems with removing this variable?
+
+From running the likelihood ratio test here, tempreature is shown to be statistically significant, while pressure was not. 
+
 
 **Part 3 (35 points)**
 
 Answer the following from Question 5 of Bilder and Loughin Section 2.4 Exercises (page 129-130):
 
 Continuing Exercise 4, consider the simplified model $logit(\pi) = \beta_0 +  \beta_1 Temp$, where $\pi$ is the probability of an O-ring failure. Complete the following:
+
+
+```{r Part 3 - EDA, results='asis'}
+
+mod3.fit<-glm(formula = O.ring2 ~ Temp, 
+             family = binomial(link = logit), data = challenger)
+
+
+```
+
 
 (a) Estimate the model.
 
