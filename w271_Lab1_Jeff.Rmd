@@ -68,6 +68,7 @@ library(sandwich)
 library(gridExtra)
 library(nnet)
 library(mcprofile)
+library(dplyr)
 
 ```
 
@@ -96,7 +97,7 @@ knitr::kable(
 
 # Distribution of Temp
 ggplot(challenger, aes(x = Temp)) +
-  geom_histogram(aes(y = ..density..), binwidth = 5, fill="#0072B2", colour="black") +
+  geom_histogram(aes(y = ..density..), binwidth = 2, fill="#0072B2", colour="black") +
   ggtitle("Distribution of Temprature") + 
   theme(plot.title = element_text(lineheight=1, face="bold"))
 
@@ -157,6 +158,8 @@ Anova(mod=mod2.fit, test = "LR")
 From running the likelihood ratio test here, tempreature is shown to be statistically significant, while pressure was not. 
 
 
+
+
 **Part 3 (35 points)**
 
 Answer the following from Question 5 of Bilder and Loughin Section 2.4 Exercises (page 129-130):
@@ -164,20 +167,102 @@ Answer the following from Question 5 of Bilder and Loughin Section 2.4 Exercises
 Continuing Exercise 4, consider the simplified model $logit(\pi) = \beta_0 +  \beta_1 Temp$, where $\pi$ is the probability of an O-ring failure. Complete the following:
 
 
-```{r Part 3 - EDA, results='asis'}
+
+(a) Estimate the model.
+
+```{r Part 3a - EDA, results='asis'}
 
 mod3.fit<-glm(formula = O.ring2 ~ Temp, 
              family = binomial(link = logit), data = challenger)
 
 
+mod3.fit
+
 ```
 
 
-(a) Estimate the model.
-
 (b) Construct two plots: (1) $\pi$ vs. Temp and (2) Expected number of failures vs. Temp. Use a temperature range of 31° to 81° on the x-axis even though the minimum temperature in the data set was 53°.
 
+```{r Part 3b - EDA, results='asis'}
+
+
+predict.data <- as.data.frame.table(array(31:81))
+predict.data$Temp <- predict.data$Freq
+
+linear.pred<-predict(object = mod3.fit, newdata = predict.data, type = "link", se = TRUE)
+linear.pred
+alpha=.05
+CI.lin.pred.lower<-linear.pred$fit - qnorm(p = 1-alpha/2)*linear.pred$se
+CI.lin.pred.upper<-linear.pred$fit + qnorm(p = 1-alpha/2)*linear.pred$se
+CI.pi.lower<-exp(CI.lin.pred.lower) / (1 + exp(CI.lin.pred.lower))
+CI.pi.upper<-exp(CI.lin.pred.upper) / (1 + exp(CI.lin.pred.upper))
+CI.pi<-exp(linear.pred$fit) / (1 + exp(linear.pred$fit))
+
+df3b <- bind_cols(temp = array(31:81), pi = CI.pi, lowerpiCI = CI.pi.lower, upperpiCI = CI.pi.upper)
+df3b
+
+p = ggplot() +
+  geom_line(data = df3b, aes(x = temp, y = pi), size=1) +
+  xlab('Temp') +
+  ylab('Probability') +
+  ggtitle("Probability of O.ring failure vs Temperature") +
+  scale_x_continuous(limits = c(31,81)) +
+  scale_y_continuous(limits = c(0, 1))
+print(p)
+
+
+
+q = ggplot() +
+  geom_line(data = df3b, aes(x = temp, y = pi*6), size=1) +
+  xlab('Temp') +
+  ylab('EV of Falures') +
+  ggtitle("Expected O-ring Failures vs Temperature") +
+  scale_x_continuous(limits = c(31,81)) +
+  scale_y_continuous(limits = c(0, 6))
+print(q)
+
+```
+
+
 (c) Include the 95% Wald confidence interval bands for $\pi$ on the plot. Why are the bands much wider for lower temperatures than for higher temperatures?
+
+
+```{r Part 3a - EDA, results='asis'}
+
+
+predict.data <- as.data.frame.table(array(31:81))
+predict.data$Temp <- predict.data$Freq
+
+linear.pred<-predict(object = mod3.fit, newdata = predict.data, type = "link", se = TRUE)
+linear.pred
+alpha=.05
+CI.lin.pred.lower<-linear.pred$fit - qnorm(p = 1-alpha/2)*linear.pred$se
+CI.lin.pred.upper<-linear.pred$fit + qnorm(p = 1-alpha/2)*linear.pred$se
+CI.pi.lower<-exp(CI.lin.pred.lower) / (1 + exp(CI.lin.pred.lower))
+CI.pi.upper<-exp(CI.lin.pred.upper) / (1 + exp(CI.lin.pred.upper))
+CI.pi<-exp(linear.pred$fit) / (1 + exp(linear.pred$fit))
+
+df3b <- bind_cols(temp = array(31:81), pi = CI.pi, lowerpiCI = CI.pi.lower, upperpiCI = CI.pi.upper)
+df3b
+
+p = ggplot() +
+  geom_line(data = df3b, aes(x = temp, y = pi, color = "pi"), size=1) +
+  geom_line(data = df3b, aes(x = temp, y = lowerpiCI, color = "lowerpiCI"), size=1) +
+  geom_line(data = df3b, aes(x = temp, y = upperpiCI, color = "upperpiCI"), size=1) +
+  xlab('Temp') +
+  ylab('Probabilities') +
+  ggtitle("Probability of O.ring failure vs Temperature") +
+  scale_x_continuous(limits = c(31,81)) +
+  scale_y_continuous(limits = c(0, 1))  +
+  scale_color_manual(values = c(
+    'pi' = 'cornflowerblue',
+    'lowerpiCI' = 'deeppink',
+    'upperpiCI' = 'burlywood')
+    ) +
+  labs(color = 'Kernel Type')
+print(p)
+
+```
 
 (d) The temperature was 31° at launch for the Challenger in 1986. Estimate the probability of an O-ring failure using this temperature, and compute a corresponding confidence interval. Discuss what assumptions need to be made in order to apply the inference procedures.
 
@@ -188,6 +273,11 @@ mod3.fit<-glm(formula = O.ring2 ~ Temp,
 **Part 4 (10 points)**
 
 With the same set of explanatory variables in your final model, estimate a linear regression model. Explain the model results; conduct model diagnostic; and assess the validity of the model assumptions.  Would you use the linear regression model or binary logistic regression in this case?  Explain why.
+
+
+
+
+
 
 **Part 5 (10 points)**
 
