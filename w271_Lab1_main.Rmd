@@ -177,7 +177,7 @@ Answer the following from Question 4 of Bilder and Loughin Section 2.4 Exercises
 (b) Estimate the logistic regression model using the explanatory variables in a linear form.
 
 ```{r}
-challenger2 <- read.table("challenger.csv", header=TRUE, sep=",")
+challenger2 <- read.table(path, header=TRUE, sep=",")
 challenger2$O.ring = ifelse(challenger2$O.ring > 0, 1, 0)
 
 O.ring <- glm(formula=O.ring ~ Temp + Pressure, family=binomial(link="logit"), data=challenger2)
@@ -221,12 +221,50 @@ w.n <- data.frame(Temperature=w$Temp, success=w$O.ring, trials=n$O.ring, proport
 
 plot(x = w$Temp, y = w$O.ring / n$O.ring, xlab="Temperature (F)", ylab="Estimated Prob", panel.first = grid(col="gray", lty="dotted"))
 curve(expr = predict(object=O.ring.temp, newdata=data.frame(Temp = x), type="response"), col="red", add = TRUE)
+
+p = ggplot() +
+  geom_line(data = df3b, aes(x = temp, y = pi), size=1) +
+  xlab('Temp') +
+  ylab('Probability') +
+  ggtitle("Probability of O.ring failure vs Temperature") +
+  scale_x_continuous(limits = c(31,81)) +
+  scale_y_continuous(limits = c(0, 1))
+print(p)
+
+
+
+q = ggplot() +
+  geom_line(data = df3b, aes(x = temp, y = pi*6), size=1) +
+  xlab('Temp') +
+  ylab('EV of Falures') +
+  ggtitle("Expected O-ring Failures vs Temperature") +
+  scale_x_continuous(limits = c(31,81)) +
+  scale_y_continuous(limits = c(0, 6))
+print(q)
+
 ```
 
 
 (c) Include the 95% Wald confidence interval bands for $\pi$ on the plot. Why are the bands much wider for lower temperatures than for higher temperatures?
 
 ```{r}
+
+p = ggplot() +
+  geom_line(data = df3b, aes(x = temp, y = pi, color = "pi"), size=1) +
+  geom_line(data = df3b, aes(x = temp, y = lowerpiCI, color = "lowerpiCI"), size=1) +
+  geom_line(data = df3b, aes(x = temp, y = upperpiCI, color = "upperpiCI"), size=1) +
+  xlab('Temp') +
+  ylab('Probabilities') +
+  ggtitle("Probability of O.ring failure vs Temperature") +
+  scale_x_continuous(limits = c(31,81)) +
+  scale_y_continuous(limits = c(0, 1))  +
+  scale_color_manual(values = c(
+    'pi' = 'cornflowerblue',
+    'lowerpiCI' = 'deeppink',
+    'upperpiCI' = 'deeppink')
+    ) +
+  labs(color = 'Kernel Type')
+print(p)
 
 ```
 
