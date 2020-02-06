@@ -84,7 +84,7 @@ path = "/Users/jeff/Documents/MIDS/W271/w271_lab1/challenger.csv"
 challenger<-read.table(file =  path, header = TRUE, sep = ",") #Import table
 
 knitr::kable(
-  admissions[1:5,1:5 ], caption = 'Top 6 Rows of Admissions Dataset')
+  challenger[1:5,1:5 ], caption = 'Top 6 Rows of Admissions Dataset')
 ```
 
 First, we read in the data set to an object called 'challenger'.  From here, we see that we have 5 variables in a dataframe with 23 observations.  We review each of the 5 below:
@@ -174,14 +174,30 @@ Answer the following from Question 4 of Bilder and Loughin Section 2.4 Exercises
 
 (a) The authors use logistic regression to estimate the probability an O-ring will fail. In order to use this model, the authors needed to assume that each O-ring is independent for each launch. Discuss why this assumption is necessary and the potential problems with it. Note that a subsequent analysis helped to alleviate the authors’ concerns about independence.
 
+The authors use two types of regression to estimate the probability that an O-ring will fail. The first model that they use is a binomial logistic regression model, which $p(t,s)$ denotes the probability per joint of some thermal distress, $t$ being the temperature and $s$ being the pressure.
+
+We can replicate the first model of the paper using the following R code (see below):
+
+```{r}
+challenger_binomial <- read.table(path, header=TRUE, sep=",")
+O.ring_binomial <- glm(formula=cbind(O.ring,6-O.ring) ~ Temp + Pressure, family=binomial, data=challenger_binomial)
+summary(O.ring_binomial)
+```
+
+A key feature of the binomial distribution is that each trial has to be independent. This may be problematic in trying to model out the likelihood of O.ring failure when using the first model. As noted in the paper (p. 947), the failure of the secondary O-ring may be conditional on the performance of the primary O-ring. 
+
+The second model for occurence of O-ring incidents, creates a binary response variable for where there is 1 if there is an incident in the flight and 0 otherwise. In this scenario, there is some "information loss" associated with reducing our dependent variable to a binary response, but we do not make the assumption that the independence of each joint is required.
+
+
 (b) Estimate the logistic regression model using the explanatory variables in a linear form.
 
 ```{r}
 challenger2 <- read.table(path, header=TRUE, sep=",")
 challenger2$O.ring = ifelse(challenger2$O.ring > 0, 1, 0)
 
-O.ring <- glm(formula=O.ring ~ Temp + Pressure, family=binomial(link="logit"), data=challenger2)
+O.ring <- glm(formula=O.ring ~ Temp, family=binomial(link="logit"), data=challenger2)
 summary(O.ring)
+
 ```
 
 
@@ -215,14 +231,30 @@ summary(O.ring.temp)
 (p.91 and 92 of textbook)
 
 ```{r}
+
+###Jeff's code
+predict.data <- as.data.frame.table(array(31:81))
+predict.data$Temp <- predict.data$Freq
+
+linear.pred<-predict(object = O.ring.temp, newdata = predict.data, type = "link", se = TRUE)
+#linear.pred
+alpha=.05
+CI.lin.pred.lower<-linear.pred$fit - qnorm(p = 1-alpha/2)*linear.pred$se
+CI.lin.pred.upper<-linear.pred$fit + qnorm(p = 1-alpha/2)*linear.pred$se
+CI.pi.lower<-exp(CI.lin.pred.lower) / (1 + exp(CI.lin.pred.lower))
+CI.pi.upper<-exp(CI.lin.pred.upper) / (1 + exp(CI.lin.pred.upper))
+CI.pi<-exp(linear.pred$fit) / (1 + exp(linear.pred$fit))
+
+df3b <- bind_cols(temp = array(31:81), pi = CI.pi, lowerpiCI = CI.pi.lower, upperpiCI = CI.pi.upper)
+
 w <- aggregate(formula = O.ring ~ Temp, data= challenger2, FUN=sum)
 n <- aggregate(formula = O.ring ~ Temp, data = challenger2, FUN=length)
-w.n <- data.frame(Temperature=w$Temp, success=w$O.ring, trials=n$O.ring, proportion = round(w$O.ring / n$O.ring, 4))
-
-plot(x = w$Temp, y = w$O.ring / n$O.ring, xlab="Temperature (F)", ylab="Estimated Prob", panel.first = grid(col="gray", lty="dotted"))
-curve(expr = predict(object=O.ring.temp, newdata=data.frame(Temp = x), type="response"), col="red", add = TRUE)
+w_n <- data.frame(Temperature=w$Temp, success=w$O.ring, trials=n$O.ring, proportion = round(w$O.ring / n$O.ring, 4))
+w_n$combine <- w$O.ring / n$O.ring
+#w_n
 
 p = ggplot() +
+  #geom_point(data = w.n, aes(x = Temperature, y = w$O.ring / n$O.ring), size=1) +
   geom_line(data = df3b, aes(x = temp, y = pi), size=1) +
   xlab('Temp') +
   ylab('Probability') +
@@ -230,8 +262,6 @@ p = ggplot() +
   scale_x_continuous(limits = c(31,81)) +
   scale_y_continuous(limits = c(0, 1))
 print(p)
-
-
 
 q = ggplot() +
   geom_line(data = df3b, aes(x = temp, y = pi*6), size=1) +
@@ -242,6 +272,13 @@ q = ggplot() +
   scale_y_continuous(limits = c(0, 6))
 print(q)
 
+
+#plot(x = w$Temp, y = w$O.ring / n$O.ring, xlab="Temperature (F)", ylab="Estimated Prob", panel.first = grid(col="gray", lty="dotted"))
+#curve(expr = predict(object=O.ring.temp, newdata=data.frame(Temp = x), type="response"), col="red", add = TRUE)
+
+
+
+###Jeff's code
 ```
 
 
@@ -274,12 +311,12 @@ print(p)
 ```{r}
 predict.data <- data.frame(Temp = 31)
 predict(object=O.ring.temp, newdata=predict.data, type="response")
-
 library(package=mcprofile)
-K <- matrix(data = c(31), nrow=1, ncol=1)
+K <- matrix(data = c(1,31), nrow=1, ncol=2)
 linear.combo <- mcprofile(object=O.ring.temp, CM=K)
 ci.logit.profile <- confint(object = linear.combo, level=0.95)
-exp(ci.logit.profile$confint) / (1+exp(ci.logit.profile$confint))
+ci.logit.profile
+#exp(ci.logit.profile$confint) / (1+exp(ci.logit.profile$confint))
 ```
 
 
