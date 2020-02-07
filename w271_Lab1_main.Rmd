@@ -346,9 +346,9 @@ simulate <- function(){
   
   #estimate with bootstrapped data
   #https://stackoverflow.com/questions/8596160/why-am-i-getting-algorithm-did-not-converge-and-fitted-prob-numerically-0-or
-  mod.fit <- suppressWarnings(glm(bootstrap_y ~ bootstrap_x, family = binomial(link=logit), maxit = 100))
-  beta0.bs = mod.fit$coefficients[1]
-  beta1.bs = mod.fit$coefficients[2]
+  mod.fit.bs <- suppressWarnings(glm(bootstrap_y ~ bootstrap_x, family = binomial(link=logit), maxit = 100))
+  beta0.bs = mod.fit.bs$coefficients[1]
+  beta1.bs = mod.fit.bs$coefficients[2]
 
   pi.31 <- 1 / (1 + exp(-(beta0.bs + beta1.bs*31))) 
   pi.72 <- 1 / (1 + exp(-(beta0.bs + beta1.bs*72))) 
