@@ -323,6 +323,67 @@ ci.logit.profile
 (e) Rather than using Wald or profile LR intervals for the probability of failure, Dalal et al. (1989) use a parametric bootstrap to compute intervals. Their process was to (1) simulate a large number of data sets (n = 23 for each) from the estimated model of  Temp; (2) estimate new models for each data set, say and (3) compute  at a specific temperature of interest. The authors used the 0.05 and 0.95 observed quantiles from the  simulated distribution as their 90% confidence interval limits. Using the parametric bootstrap, compute 90% confidence intervals separately at temperatures of 31° and 72°.27
 
 
+```{r warnings=FALSE}
+
+#start with the parameter estimates from our model and our Temp data
+beta0 <- O.ring.temp$coefficients[1]
+beta1 <- O.ring.temp$coefficients[2]
+
+x <- challenger$Temp
+weights <- challenger$Number
+set.seed(808)
+
+simulate <- function(){
+  #Sample temp data with replacement (bootstrap)
+  bootstrap_x <- sample(x, 23, replace = TRUE)
+  bootstrap_x
+
+  #Calculate pi
+  pi <- 1 / (1 + exp(-(beta0 + beta1*(bootstrap_x))))
+  pi
+  #Estimate y with probability pi
+  bootstrap_y <- rbinom(n = 23, size = 1, prob = pi)
+  
+  #estimate with bootstrapped data
+  #https://stackoverflow.com/questions/8596160/why-am-i-getting-algorithm-did-not-converge-and-fitted-prob-numerically-0-or
+  mod.fit <- suppressWarnings(glm(bootstrap_y ~ bootstrap_x, family = binomial(link=logit), maxit = 100))
+  beta0.bs = mod.fit$coefficients[1]
+  beta1.bs = mod.fit$coefficients[2]
+
+  pi.31 <- 1 / (1 + exp(-(beta0.bs + beta1.bs*31))) 
+  pi.72 <- 1 / (1 + exp(-(beta0.bs + beta1.bs*72))) 
+  return(c(pi.31,pi.72))
+}
+
+n=1000
+sim_matrix <- replicate(n,simulate())
+
+#plot histogram of 31 degrees
+p31 <- ggplot() + 
+        geom_histogram(aes(sim_matrix[1,]), bins=30) + 
+        xlab('Probability') +
+        ylab('N Simulations') +
+        ggtitle("Histogram of Bootstraped probabilities @ 31 degrees w/ 1000 sims") 
+print(p31)
+
+#return 90th conf interval
+quantile(sim_matrix[1,],c(0.1,0.9))
+
+#plot histogram of 72 degrees
+p72 <- ggplot() + 
+        geom_histogram(aes(sim_matrix[2,]), bins=30) + 
+        xlab('Probability') +
+        ylab('N Simulations') +
+        ggtitle("Histogram of Bootstraped probabilities @ 72 degrees w/ 1000 sims")
+print(p72)
+
+#return 90th conf interval
+quantile(sim_matrix[2,],c(0.1,0.9))
+```
+
+
+
+
 
 (f) Determine if a quadratic term is needed in the model for the temperature.
 
