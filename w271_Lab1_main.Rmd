@@ -325,12 +325,15 @@ ci.logit.profile
 
 ```{r warnings=FALSE}
 
-#start with the parameter estimates from our model and our Temp data
+#start with the parameter estimates from our model and our Temp 
+
+
+
+
 beta0 <- O.ring.temp$coefficients[1]
 beta1 <- O.ring.temp$coefficients[2]
 
 x <- challenger$Temp
-weights <- challenger$Number
 set.seed(808)
 
 simulate <- function(){
@@ -343,10 +346,11 @@ simulate <- function(){
   pi
   #Estimate y with probability pi
   bootstrap_y <- rbinom(n = 23, size = 1, prob = pi)
+  bootstrap_y
   
   #estimate with bootstrapped data
   #https://stackoverflow.com/questions/8596160/why-am-i-getting-algorithm-did-not-converge-and-fitted-prob-numerically-0-or
-  mod.fit.bs <- suppressWarnings(glm(bootstrap_y ~ bootstrap_x, family = binomial(link=logit), maxit = 100))
+  mod.fit.bs <- glm(bootstrap_y ~ bootstrap_x, family = binomial(link=logit), maxit = 100)
   beta0.bs = mod.fit.bs$coefficients[1]
   beta1.bs = mod.fit.bs$coefficients[2]
 
