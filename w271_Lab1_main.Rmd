@@ -7,8 +7,8 @@ output:
   number_sections: true
 fontsize: 11pt
 geometry: margin=1in
-fig_width: 6 
-fig_height: 4
+fig_width: 5
+fig_height: 3
 ---
 
 ## Instructions (Please Read Carefully):
@@ -81,7 +81,7 @@ library(dplyr)
 Conduct a thorough EDA of the data set. This should include both graphical and tabular analysis as taught in this course. Output-dump (that is, graphs and tables that don't come with explanations) will result in a very low, if not zero, score. Since the report has a page-limit, you will have to be selective when choosing visuals to illustrate your key points, associated with a concise explanation of the visuals. This EDA should begin with an inspection of the given dataset; examination of anomalies, missing values, potential of top and/or bottom code etc.
 
 ```{r}
-path = "/Users/jamesdarmody/Documents/Lab1w271/w271_lab1/challenger.csv"
+path = "/Users/jeff/Documents/MIDS/W271/w271_lab1/challenger.csv"
 
 challenger<-read.table(file =  path, header = TRUE, sep = ",") #Import table
 
@@ -97,7 +97,7 @@ First, we read in the data set to an object called 'challenger'.  From here, we 
 - O.ring: An integer variable that counts the number of O.ring failures on the flight in question
 - Number: An integer variable recording the number of O.rings on each flight
 
-```{r}
+```{r, results='asis', message = F, warning = F}
 
 #output in text format for view in latex
 stargazer(challenger, header= F, title = "Summary Table of O.Ring Failure")
@@ -182,10 +182,12 @@ The authors use two types of regression to estimate the probability that an O-ri
 
 We can replicate the first model of the paper using the following R code (see below):
 
-```{r}
+```{r, results='asis', message = F, warning = F}
 challenger_binomial <- read.table(path, header=TRUE, sep=",")
 O.ring_binomial <- glm(formula=cbind(O.ring,6-O.ring) ~ Temp + Pressure, family=binomial, data=challenger_binomial)
-summary(O.ring_binomial)
+#summary(O.ring_binomial)
+stargazer(O.ring_binomial, header=F, title = "VIF for Model 2")
+
 ```
 
 A key feature of the binomial distribution is that each trial has to be independent. This may be problematic in trying to model out the likelihood of O.ring failure when using the first model. As noted in the paper (p. 947), the failure of the secondary O-ring may be conditional on the performance of the primary O-ring. 
@@ -195,7 +197,7 @@ The second model for occurence of O-ring incidents, creates a binary response va
 
 (b) Estimate the logistic regression model using the explanatory variables in a linear form.
 
-```{r}
+```{r, results='asis', message = F, warning = F}
 challenger2 <- read.table(path, header=TRUE, sep=",")
 challenger2$O.ring = ifelse(challenger2$O.ring > 0, 1, 0)
 
@@ -209,7 +211,7 @@ stargazer(O.ring, header = F, type = 'latex', omit.table.layout= 'n',
 
 (c) Perform LRTs to judge the importance of the explanatory variables in the model.
 
-```{r, results=‘asis’, message = F, warning = F}
+```{r, results='asis', message = F, warning = F}
 stargazer(Anova(O.ring), header = F, type = 'latex', omit.table.layout= 'n',
           title='Regression Results for Model 1')
 ```
@@ -227,7 +229,7 @@ Continuing Exercise 4, consider the simplified model $logit(\pi) = \beta_0 +  \b
 
 (a) Estimate the model.
 
-```{r}
+```{r, results='asis', message = F, warning = F}
 O.ring.temp <- glm(formula= O.ring ~ Temp, family=binomial(link=logit), data=challenger2)
 stargazer(O.ring.temp, header = F, type = 'latex', omit.table.layout= 'n',
           title='Regression Results for Model 2')
@@ -335,9 +337,6 @@ ci.logit.profile
 
 #start with the parameter estimates from our model and our Temp 
 
-
-
-
 beta0 <- O.ring.temp$coefficients[1]
 beta1 <- O.ring.temp$coefficients[2]
 
@@ -358,7 +357,7 @@ simulate <- function(){
   
   #estimate with bootstrapped data
   #https://stackoverflow.com/questions/8596160/why-am-i-getting-algorithm-did-not-converge-and-fitted-prob-numerically-0-or
-  mod.fit.bs <- glm(bootstrap_y ~ bootstrap_x, family = binomial(link=logit), maxit = 100)
+  mod.fit.bs <- suppressWarnings(glm(bootstrap_y ~ bootstrap_x, family = binomial(link=logit), maxit = 100))
   beta0.bs = mod.fit.bs$coefficients[1]
   beta1.bs = mod.fit.bs$coefficients[2]
 
@@ -411,36 +410,41 @@ Based on the p-value of 0.63, there does not appear to be a need for a quadratic
 
 With the same set of explanatory variables in your final model, estimate a linear regression model. Explain the model results; conduct model diagnostic; and assess the validity of the model assumptions.  Would you use the linear regression model or binary logistic regression in this case?  Explain why.
 
-```{r}
+
+```{r, results='asis', message = F, warning = F}
 O.ring.linear <- lm(formula = O.ring ~ Temp + Pressure, data=challenger2)
-summary(O.ring.linear)
+#summary(O.ring.linear)
+stargazer(O.ring.linear, header=F, title = "Linear Regression Model Output")
+
+# Residual plots
+p<-autoplot(O.ring.linear, top="Regression Diagnostic Plots of Linear Regression Model (outliers removed)")
+
+gridExtra::grid.arrange(grobs = p@plots, 
+                        top="Regression Diagnostic Plots of Linear Regression Model (outliers removed)")
 ```
 
 Linearity in parameters holds for this model. Random sampling, the next assumption behind classical linear models, is something that is dependent on the methodology behind constructing the data set. Because we are dealing with space shuttle launches, which occur infrequently, there are likely to not be an over-abundance of shuttle launches, and we may actually be dealing with a dataset that is close to or exactly matches the population of total observations available. 
 
 Below, the variance inflation factor shows that none of the values by variable are low, meaning the assumption of no perfect multicollinearity holds.
 
-```{r}
-vif(O.ring.linear)
+```{r, results='asis', message = F, warning = F}
+stargazer(vif(O.ring.linear), header=F, title = "VIF for Model 2")
+#vif(O.ring.linear)
 ```
 
-The following chart shows that the assumption of zero conditional mean is violated, because the line strays quite far from zero.
+Our Residuals vs fitted chart shows that the assumption of zero conditional mean is violated, because the line strays quite far from zero.
+
+The Scale-Location chart is not flat which shows this regression violates the assumption of homoskedasticity.  Heteroskedasticity does not cause biased estimates in itself, but it does the formulas for standard errors to be inaccurate, which means we would need to use robust standard errors to avoid problems here.
+
+The charts below show that the normality of error assumption is not met because the residuals deviate from the straight line in our Normal-Q-Q plot (they look like a logistic function), and they do not follow a normal distribution in the second.
 
 ```{r}
-plot(O.ring.linear, which=1)
-```
-
-The Scale-Location chart below is not flat which shows this regression violates the assumption of homoskedasticity.  Heteroskedasticity does not cause biased estimates in itself, but it does the formulas for standard errors to be inaccurate, which means we would need to use robust standard errors to avoid problems here.
-
-```{r}
-plot(O.ring.linear, which = 3)
-```
-
-The charts below show that the normality of error assumption is not met because the residuals deviate from the straight line in the first chart (they look like a logistic function), and they do not follow a normal distribution in the second.
-
-```{r}
-plot(O.ring.linear, which = 2)
-hist(O.ring.linear$residuals, breaks = 50)
+p_residuals <- ggplot() + 
+        geom_histogram(aes(O.ring.linear$residuals), bins=30) + 
+        xlab('Residuals') +
+        ylab('Frequency') +
+        ggtitle("Histogram of Residuals for Linear Model")
+print(p_residuals)
 ```
 
 
@@ -448,9 +452,11 @@ hist(O.ring.linear$residuals, breaks = 50)
 
 Interpret the main result of your final model in terms of both odds and probability of failure. Summarize the final result with respect to the question(s) being asked and key takeaways from the analysis.
 
-```{r}
+```{r, results='asis', message = F, warning = F}
 O.ring.final <- glm(formula = O.ring ~ Temp, family=binomial(link="logit"), data=challenger2)
-summary(O.ring.final)
+#summary(O.ring.final)
+
+stargazer(O.ring.final, header=F, title = "Final Model Output")
 ```
 
 ## Ahana take because of stargazer
