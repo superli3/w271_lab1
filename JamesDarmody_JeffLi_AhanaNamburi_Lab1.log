@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  9 FEB 2020 10:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  9 FEB 2020 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**w271_Lab1_main.tex
-(./w271_Lab1_main.tex
+**JamesDarmody_JeffLi_AhanaNamburi_Lab1.tex
+(./JamesDarmody_JeffLi_AhanaNamburi_Lab1.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -532,10 +532,7 @@ Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmarkwidth=\skip53
 \thanksmargin=\skip54
 \droptitle=\skip55
-) (./w271_Lab1_main.aux
-
-LaTeX Warning: Label `' multiply defined.
-
+) (./JamesDarmody_JeffLi_AhanaNamburi_Lab1.aux
 
 LaTeX Warning: Label `' multiply defined.
 
@@ -555,7 +552,7 @@ LaTeX Warning: Label `' multiply defined.
 LaTeX Warning: Label `' multiply defined.
 
 )
-\openout1 = `w271_Lab1_main.aux'.
+\openout1 = `JamesDarmody_JeffLi_AhanaNamburi_Lab1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 127.
 LaTeX Font Info:    ... okay on input line 127.
@@ -644,9 +641,10 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 127.
 LaTeX Info: Redefining \pageref on input line 127.
 LaTeX Info: Redefining \nameref on input line 127.
-(./w271_Lab1_main.out) (./w271_Lab1_main.out)
+(./JamesDarmody_JeffLi_AhanaNamburi_Lab1.out) (./JamesDarmody_JeffLi_AhanaNambu
+ri_Lab1.out)
 \@outlinefile=\write4
-\openout4 = `w271_Lab1_main.out'.
+\openout4 = `JamesDarmody_JeffLi_AhanaNamburi_Lab1.out'.
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -676,199 +674,202 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 136.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 168.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 149.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [1
-
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+)
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 223.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 226
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 152.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 155
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 281.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 184.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 210.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 281.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 210.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 281
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 210
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 281
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 210
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 281.
+(Font)              <10.95> on input line 210.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 281.
+(Font)              <8> on input line 210.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 281.
-LaTeX Font Info:    Try loading font information for U+msa on input line 281.
+(Font)              <6> on input line 210.
+LaTeX Font Info:    Try loading font information for U+msa on input line 210.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 281.
+LaTeX Font Info:    Try loading font information for U+msb on input line 210.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [2]
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-4-1.pdf, id=41, 459.7175pt x 3
-16.18124pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (typ
-e pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-4-1.pd
-f  used on input line 353.
+) [1
+
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-4-1.pdf
+, id=30, 459.7175pt x 316.18124pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-4-
+1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-4-1
+.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-4-1.pdf  used on input line 282.
 (pdftex.def)             Requested size: 459.74442pt x 316.19975pt.
-[3]
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-5-1.pdf, id=47, 459.7175pt x 3
-16.18124pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (typ
-e pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-5-1.pd
-f  used on input line 377.
+[2]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-5-1.pdf
+, id=36, 459.7175pt x 316.18124pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-5-
+1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-5-1
+.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-5-1.pdf  used on input line 306.
 (pdftex.def)             Requested size: 459.74442pt x 316.19975pt.
-[4 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-4-1.pdf>]
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-6-1.pdf, id=60, 453.695pt x 31
-3.17pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (typ
-e pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-6-1.pd
-f  used on input line 392.
+[3 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-4-
+1.pdf>]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-6-1.pdf
+, id=49, 453.695pt x 313.17pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-6-
+1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-6-1
+.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-6-1.pdf  used on input line 321.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-[5 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-5-1.pdf>] [6 <./w271_Lab1
-_main_files/figure-latex/unnamed-chunk-6-1.pdf>] [7] [8] [9] [10]
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-12-1.pdf, id=122, 459.7175pt x
- 315.1775pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (ty
-pe pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-12-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-12-1.p
-df  used on input line 744.
+[4 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-5-
+1.pdf>] [5 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-
+chunk-6-1.pdf>] [6] [7] [8]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-12-1.pd
+f, id=106, 459.7175pt x 315.1775pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-12
+-1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-12-
+1.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-12-1.pdf  used on input line 634.
 (pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
+[9 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-12
+-1.pdf>]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-12-2.pd
+f, id=118, 463.7325pt x 315.1775pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-12
+-2.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-12-
+2.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-12-2.pdf  used on input line 649.
+(pdftex.def)             Requested size: 463.73842pt x 315.18153pt.
 
-Underfull \vbox (badness 4647) detected at line 757
+Underfull \vbox (badness 1062) detected at line 686
  []
 
-[11 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-12-1.pdf>]
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-12-2.pdf, id=134, 463.7325pt x
- 315.1775pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-12-2.pdf Graphic file (ty
-pe pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-12-2.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-12-2.p
-df  used on input line 759.
-(pdftex.def)             Requested size: 463.73842pt x 315.18153pt.
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-13-1.pdf, id=135, 453.695pt x 
-315.1775pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (ty
-pe pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-13-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-13-1.p
-df  used on input line 792.
+[10 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-1
+2-2.pdf>]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-13-1.pd
+f, id=131, 453.695pt x 315.1775pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-13
+-1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-13-
+1.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-13-1.pdf  used on input line 688.
 (pdftex.def)             Requested size: 453.6939pt x 315.17673pt.
-[12 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-12-2.pdf>] [13 <./w271_L
-ab1_main_files/figure-latex/unnamed-chunk-13-1.pdf>]
-Underfull \vbox (badness 1983) detected at line 917
- []
-
-[14]
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-15-1.pdf, id=167, 463.7325pt x
- 315.1775pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (ty
-pe pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-15-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-15-1.p
-df  used on input line 919.
+[11 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-1
+3-1.pdf>] [12]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-15-1.pd
+f, id=149, 463.7325pt x 315.1775pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-15
+-1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-15-
+1.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-15-1.pdf  used on input line 804.
 (pdftex.def)             Requested size: 463.73842pt x 315.18153pt.
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-15-2.pdf, id=168, 463.7325pt x
- 315.1775pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-15-2.pdf Graphic file (ty
-pe pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-15-2.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-15-2.p
-df  used on input line 945.
+[13 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-1
+5-1.pdf>]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-15-2.pd
+f, id=163, 463.7325pt x 315.1775pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-15
+-2.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-15-
+2.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-15-2.pdf  used on input line 830.
 (pdftex.def)             Requested size: 463.73842pt x 315.18153pt.
-[15 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-15-1.pdf>]
-Overfull \hbox (743.22775pt too wide) in paragraph at lines 994--994
-[]\T1/lmtt/m/n/10.95 ## Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{
-Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1
-}{c}{Pctl(25)} & \multicolumn{1}{c}{Pctl(75)} & \multicolumn{1}{c}{Max} \\[] 
- []
-
-[16 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-15-2.pdf>]
-Overfull \hbox (743.22775pt too wide) in paragraph at lines 1019--1019
-[]\T1/lmtt/m/n/10.95 ## Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{
-Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1
-}{c}{Pctl(25)} & \multicolumn{1}{c}{Pctl(75)} & \multicolumn{1}{c}{Max} \\[] 
- []
-
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-17-1.pdf, id=192, 460.72125pt 
-x 318.18875pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (ty
-pe pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-17-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-17-1.p
-df  used on input line 1090.
+[14 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-1
+5-2.pdf>]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-17-1.pd
+f, id=176, 460.72125pt x 318.18875pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-17
+-1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-17-
+1.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-17-1.pdf  used on input line 945.
 (pdftex.def)             Requested size: 460.72012pt x 318.18796pt.
-[17] [18 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-17-1.pdf>]
-<w271_Lab1_main_files/figure-latex/unnamed-chunk-19-1.pdf, id=209, 459.7175pt x
- 313.17pt>
-File: w271_Lab1_main_files/figure-latex/unnamed-chunk-19-1.pdf Graphic file (ty
-pe pdf)
-<use w271_Lab1_main_files/figure-latex/unnamed-chunk-19-1.pdf>
-Package pdftex.def Info: w271_Lab1_main_files/figure-latex/unnamed-chunk-19-1.p
-df  used on input line 1155.
+[15] [16 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-ch
+unk-17-1.pdf>]
+<JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-19-1.pd
+f, id=194, 459.7175pt x 313.17pt>
+File: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-19
+-1.pdf Graphic file (type pdf)
+<use JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-19-
+1.pdf>
+Package pdftex.def Info: JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-lat
+ex/unnamed-chunk-19-1.pdf  used on input line 1010.
 (pdftex.def)             Requested size: 459.7304pt x 313.17877pt.
-[19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1205.
-[20 <./w271_Lab1_main_files/figure-latex/unnamed-chunk-19-1.pdf>] [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1205.
-(./w271_Lab1_main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1205.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1205.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1060.
+[17 <./JamesDarmody_JeffLi_AhanaNamburi_Lab1_files/figure-latex/unnamed-chunk-1
+9-1.pdf>] [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1060.
+(./JamesDarmody_JeffLi_AhanaNamburi_Lab1.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1060.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1060.
 
-Package rerunfilecheck Info: File `w271_Lab1_main.out' has not changed.
-(rerunfilecheck)             Checksum: A90772DBDC5FF4373301D5EF06329774;825.
+Package rerunfilecheck Info: File `JamesDarmody_JeffLi_AhanaNamburi_Lab1.out' h
+as not changed.
+(rerunfilecheck)             Checksum: FE12A35FBCE88EB53E260302A6EAAC36;581.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1205.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1060.
  ) 
 Here is how much of TeX's memory you used:
- 13141 strings out of 492616
- 194398 string characters out of 6129482
- 307231 words of memory out of 5000000
- 16759 multiletter control sequences out of 15000+600000
- 51441 words of font info for 82 fonts, out of 8000000 for 9000
+ 13128 strings out of 492616
+ 195454 string characters out of 6129482
+ 307286 words of memory out of 5000000
+ 16758 multiletter control sequences out of 15000+600000
+ 51275 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,10n,38p,977b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,10n,38p,1000b,374s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
-texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/20
-19/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2019/texmf-dist/
+texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2019/t
+exmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-dist/
 fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/
 dvips/lm/lm-ts1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
 mbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb>
@@ -883,10 +884,11 @@ ic/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri10
 ive/2019/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2019/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/lm/lmtti10.pfb>
-Output written on w271_Lab1_main.pdf (21 pages, 371435 bytes).
+Output written on JamesDarmody_JeffLi_AhanaNamburi_Lab1.pdf (18 pages, 365234 b
+ytes).
 PDF statistics:
- 302 PDF objects out of 1000 (max. 8388607)
- 231 compressed objects within 3 object streams
- 49 named destinations out of 1000 (max. 500000)
- 8267 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 8259 words of extra memory for PDF output out of 10000 (max. 10000000)
 
